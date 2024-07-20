@@ -58,7 +58,7 @@ public class TrybankLib
     // 3. Construa a funcionalidade de fazer Logout
     public void Logout()
     {
-        validateUserLogget();
+        ValidateUserLogget();
 
         loggedUser = -99;
         Logged = false;
@@ -67,7 +67,7 @@ public class TrybankLib
     // 4. Construa a funcionalidade de checar o saldo
     public int CheckBalance()
     {
-        validateUserLogget();
+        ValidateUserLogget();
 
         int cash = Bank[loggedUser, 3];
         return cash;
@@ -76,14 +76,14 @@ public class TrybankLib
     // 5. Construa a funcionalidade de depositar dinheiro
     public void Deposit(int value)
     {
-        validateUserLogget();
+        ValidateUserLogget();
         Bank[loggedUser, 3] += value;
     }
 
     // 6. Construa a funcionalidade de sacar dinheiro
     public void Withdraw(int value)
     {
-        validateUserLogget();
+        ValidateUserLogget();
         int cash = Bank[loggedUser, 3];
 
         if (cash < value)
@@ -95,7 +95,9 @@ public class TrybankLib
     // 7. Construa a funcionalidade de transferir dinheiro entre contas
     public void Transfer(int destinationNumber, int destinationAgency, int value)
     {
-        throw new NotImplementedException();
+        ValidateUserLogget();
+
+        
     }
 
     private bool AccountInUse(int number, int agency)
@@ -115,7 +117,7 @@ public class TrybankLib
         return accountRegistered;
     }
 
-    private void validateUserLogget()
+    private void ValidateUserLogget()
     {
         if (!Logged || loggedUser == -99)
             throw new AccessViolationException("Usuário não está logado");
