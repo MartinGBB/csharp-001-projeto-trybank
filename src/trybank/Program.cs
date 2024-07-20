@@ -1,4 +1,3 @@
-using System;
 using Trybank.Lib;
 
 namespace Trybank.App;
