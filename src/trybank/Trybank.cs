@@ -84,10 +84,7 @@ public class TrybankLib
     public void Withdraw(int value)
     {
         ValidateUserLogget();
-        int cash = Bank[loggedUser, 3];
-
-        if (cash < value)
-            throw new InvalidOperationException("Saldo insuficiente");
+        ValidateCash(value);
 
         Bank[loggedUser, 3] -= value;
     }
@@ -121,5 +118,12 @@ public class TrybankLib
     {
         if (!Logged || loggedUser == -99)
             throw new AccessViolationException("Usuário não está logado");
+    }
+
+    private void ValidateCash(int value)
+    {
+        int cash = Bank[loggedUser, 3];
+        if (cash < value)
+            throw new InvalidOperationException("Saldo insuficiente");
     }
 }
