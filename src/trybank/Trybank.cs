@@ -93,8 +93,20 @@ public class TrybankLib
     public void Transfer(int destinationNumber, int destinationAgency, int value)
     {
         ValidateUserLogget();
+        ValidateCash(value);
 
-        
+        int userTransfer = -1;
+
+        for (int i = 0; i < registeredAccounts; i++)
+        {
+            if (Bank[i, 1] == destinationAgency && Bank[i, 0] == destinationNumber)
+                userTransfer = i;
+        }
+
+        if (userTransfer == -1) throw new ArgumentException("Dados não encontrados");
+
+        Bank[loggedUser, 3] -= value;
+        Bank[userTransfer, 3] += value;
     }
 
     private bool AccountInUse(int number, int agency)
