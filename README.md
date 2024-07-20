@@ -12,7 +12,7 @@ Para executar o projeto, siga os passos abaixo:
 
 1. Clone o repositório:
   ``` zsh
-  git clone https://github.com/tu-repositorio/trybank.git
+  git clone git@github.com:MartinGBB/csharp-001-projeto-trybank.git
   cd trybank
   ```
 
